@@ -76,3 +76,26 @@ ggplot(weather_df, aes(x = tmin, y = tmax)) +
   geom_smooth(se = FALSE)
 ```
 
+```{r}
+ggplot(weather_df, aes(x = tmin, y = tmax, color = name)) +
+  geom_point(alpha = 0.4) +
+  geom_smooth(se = FALSE)
+```
+
+Facetting...
+
+```{r}
+ggplot(weather_df, aes(x = tmin, y = tmax, color = name)) +
+  geom_point(alpha = 0.4) +
+  geom_smooth(se = FALSE) +
+  facet_grid( ~ name)
+```
+
+A more interesting plot!
+
+```{r}
+ggplot(weather_df, aes(x = date, y = tmax, color = name, size = prcp)) +
+  geom_point() +
+  geom_smooth(se = FALSE) +
+  facet_grid(~name)
+```
