@@ -11,6 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r tidyverse, include = FALSE}
 library(tidyverse)
+library(ggridges)
 ```
 
 
@@ -32,4 +33,46 @@ weather_df =
 weather_df
 ```
 
+## Start a plot
+
+```{r ggplot_aes}
+ggplot(weather_df, aes(x = tmin, y = tmax))
+```
+
+Scatterplot
+
+```{r}
+ggplot(weather_df, aes(x = tmin, y = tmax)) +
+    geom_point()
+```
+
+```{r}
+weather_df %>%
+    filter(name == "CentralPark_NY") %>%
+    ggplot(aes(x = tmin, y = tmax)) +
+             geom_point()
+```
+
+## More plot options
+
+```{r}
+ggplot(weather_df, aes(x = tmin, y = tmax)) +
+  geom_point(aes(color = name))
+```
+
+Add a geom
+
+```{r}
+ggplot(weather_df, aes(x = tmin, y = tmax)) +
+  geom_point(aes(color = name)) +
+  geom_smooth(se = FALSE)
+```
+
+And even more options...
+
+```{r}
+ggplot(weather_df, aes(x = tmin, y = tmax)) +
+  geom_point(aes(color = name), alpha = 0.4) +
+  geom_smooth(se = FALSE)
+```
 
